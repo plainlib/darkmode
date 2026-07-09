@@ -8,6 +8,8 @@ unit uImport;
 
 interface
 
+{$IFDEF WINDOWS}
+
 uses
   Classes, SysUtils, Windows;
 
@@ -152,3 +154,9 @@ end;
 
 end.
 
+{$ELSE}
+
+implementation
+
+end.
+{$ENDIF}

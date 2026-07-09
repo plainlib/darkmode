@@ -49,6 +49,8 @@ unit uWin32WidgetSetDark;
 
 interface
 
+{$IFDEF WINDOWS}
+
 uses
   LCLVersion;
 
@@ -2101,3 +2103,10 @@ initialization
 finalization
   CloseAllDarkThemes;
 end.
+
+{$ELSE}
+
+implementation
+
+end.
+{$ENDIF}

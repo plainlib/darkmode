@@ -12,11 +12,12 @@ interface
 
 uses
   SysUtils,
-  Graphics,
- {$IFDEF WINDOWS}
-  uDarkStyle,
-  Registry;
-{$ENDIF}
+  Graphics
+  {$IFDEF WINDOWS}
+  ,uDarkStyle
+  ,Registry
+  {$ENDIF}
+  ;
 
 type
   TDarkUtils = class
@@ -30,9 +31,11 @@ type
     // Indicates whether the system is currently in dark mode.
     class function IsDarkMode: Boolean; static;
 
+    {$IFDEF WINDOWS}
     // Detects whether the Windows taskbar is using a dark theme.
     // This method is only effective on Windows; on other platforms it returns False.
     class function IsTaskbarDark: Boolean; static;
+    {$ENDIF}
   end;
 
 implementation

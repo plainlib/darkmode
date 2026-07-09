@@ -35,6 +35,8 @@ unit uDarkStyle;
 
 interface
 
+{$IFDEF WINDOWS}
+
 uses
   Classes, SysUtils, Windows;
 
@@ -273,4 +275,16 @@ initialization
   InitDarkMode;
 
 end.
+
+{$ELSE}
+
+var
+  g_buildNumber: DWORD = 0;
+  g_darkModeEnabled: boolean = false;
+  g_darkModeSupported: boolean = false;
+
+implementation
+
+end.
+{$ENDIF}
 
