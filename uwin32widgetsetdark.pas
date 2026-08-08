@@ -1116,14 +1116,14 @@ begin
         LCanvas.Handle := hdc;
         AColor := SysColor[COLOR_WINDOW];
 
-        if iStateId = TS_HOT then
-          LCanvas.Brush.Color := Lighter(AColor, 116)
+       if iStateId = TS_HOT then
+          LCanvas.Brush.Color := Lighter(AColor, 190)
         else if iStateId = TS_PRESSED then
-          LCanvas.Brush.Color := Darker(AColor, 116)
+          LCanvas.Brush.Color := Lighter(AColor, 220)
+        else if iStateId = TS_CHECKED then
+          LCanvas.Brush.Color := Lighter(AColor, 200)
         else
-        begin
           LCanvas.Brush.Color := AColor;
-        end;
         LCanvas.FillRect(pRect);
 
         if iStateId <> TS_NORMAL then
@@ -1136,7 +1136,7 @@ begin
             LCanvas.FillRect(LRect);
           end;
 
-          LCanvas.Pen.Color := Darker(AColor, 140);
+          LCanvas.Pen.Color := Lighter(AColor, 140);
           LCanvas.RoundRect(pRect, 6, 6);
 
           LRect := pRect;
