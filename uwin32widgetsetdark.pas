@@ -213,6 +213,16 @@ begin
   end;
 end;
 
+// Apply dark mode to a RichEdit control immediately after creation
+procedure ApplyDarkToRichEdit(Window: HWND);
+begin
+  AllowDarkModeForWindow(Window, True);
+  SetWindowTheme(Window, 'DarkMode_Explorer', nil);
+  SendMessageW(Window, WM_THEMECHANGED, 0, 0);
+  // Set dark background for the RichEdit
+  SendMessage(Window, EM_SETBKGNDCOLOR, 0, SysColor[COLOR_WINDOW]);
+end;
+
 function HSVToColor(H, S, V: double): TColor;
 var
   R, G, B: integer;
@@ -872,7 +882,7 @@ begin
       Exit(LResult(ComboBox.Brush.Reference.Handle));
     end;
   end;
-  Result := DefSubclassProc(Window, Msg, wParam, lParam);
+  Result := DefSubclassProc(Window, Msg, wParam, lparam);
 end;
 
 class function TWin32WSCustomComboBoxDark.CreateHandle(const AWinControl: TWinControl; const AParams: TCreateParams): HWND;
@@ -1349,6 +1359,7 @@ function _CreateWindowExW(dwExStyle: DWORD; lpClassName: LPCWSTR; lpWindowName: 
   lpParam: LPVOID): HWND; stdcall;
 var
   AParams: PNCCreateParams absolute lpParam;
+  CreatedWindow: HWND;
 begin
   if Assigned(AParams) and (AParams^.WinControl is TCustomForm) then
   begin
@@ -1363,7 +1374,13 @@ begin
   begin
     dwExStyle := dwExStyle or WS_EX_CONTEXTHELP;
   end;
-  Result := __CreateWindowExW(dwExStyle, lpClassName, lpWindowName, dwStyle, X, Y, nWidth, nHeight, hWndParent, hMenu, hInstance, lpParam);
+  CreatedWindow := __CreateWindowExW(dwExStyle, lpClassName, lpWindowName, dwStyle, X, Y, nWidth, nHeight, hWndParent, hMenu, hInstance, lpParam);
+
+  // Apply dark theme to RichEdit controls as soon as they are created
+  if (CreatedWindow <> 0) and ((lstrcmpiW(lpClassName, 'RICHEDIT50W') = 0) or (lstrcmpiW(lpClassName, 'RichEdit20W') = 0)) then
+    ApplyDarkToRichEdit(CreatedWindow);
+
+  Result := CreatedWindow;
 end;
 
 function TaskDialogIndirectDark(const pTaskConfig: PTASKDIALOGCONFIG; pnButton: PInteger; pnRadioButton: PInteger;
