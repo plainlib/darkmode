@@ -1124,7 +1124,7 @@ begin
       LCanvas := TCanvas.Create;
       try
         LCanvas.Handle := hdc;
-        AColor := SysColor[COLOR_WINDOW];
+        AColor := SysColor[COLOR_BTNFACE];
 
        if iStateId = TS_HOT then
           LCanvas.Brush.Color := Lighter(AColor, 190)
@@ -1954,7 +1954,7 @@ begin
   SysColor[COLOR_ACTIVECAPTION] := RGBToColor(42, 130, 218);
   SysColor[COLOR_INACTIVECAPTION] := RGBToColor(53, 53, 53);
   SysColor[COLOR_MENU] := RGBToColor(42, 42, 42);
-  SysColor[COLOR_WINDOW] := RGBToColor(42, 42, 42);
+  SysColor[COLOR_WINDOW] := RGBToColor(32, 32, 32);
   SysColor[COLOR_WINDOWFRAME] := RGBToColor(20, 20, 20);
   SysColor[COLOR_MENUTEXT] := RGBToColor(255, 255, 255);
   SysColor[COLOR_WINDOWTEXT] := RGBToColor(255, 255, 255);
@@ -1964,7 +1964,7 @@ begin
   SysColor[COLOR_APPWORKSPACE] := RGBToColor(53, 53, 53);
   SysColor[COLOR_HIGHLIGHT] := RGBToColor(42, 130, 218);
   SysColor[COLOR_HIGHLIGHTTEXT] := RGBToColor(255, 255, 255);
-  SysColor[COLOR_BTNFACE] := RGBToColor(53, 53, 53);
+  SysColor[COLOR_BTNFACE] := RGBToColor(63, 63, 63);
   SysColor[COLOR_BTNSHADOW] := RGBToColor(35, 35, 35);
   SysColor[COLOR_GRAYTEXT] := RGBToColor(160, 160, 160);
   SysColor[COLOR_BTNTEXT] := RGBToColor(255, 255, 255);
