@@ -1127,11 +1127,11 @@ begin
         AColor := SysColor[COLOR_BTNFACE];
 
        if iStateId = TS_HOT then
-          LCanvas.Brush.Color := Lighter(AColor, 190)
+          LCanvas.Brush.Color := Lighter(AColor, 140)
         else if iStateId = TS_PRESSED then
-          LCanvas.Brush.Color := Lighter(AColor, 220)
+          LCanvas.Brush.Color := Lighter(AColor, 150)
         else if iStateId = TS_CHECKED then
-          LCanvas.Brush.Color := Lighter(AColor, 200)
+          LCanvas.Brush.Color := Lighter(AColor, 170)
         else
           LCanvas.Brush.Color := AColor;
         LCanvas.FillRect(pRect);
