@@ -1615,7 +1615,7 @@ begin
     end
     else if iStateId in [CBS_CHECKEDNORMAL, CBS_CHECKEDHOT, CBS_CHECKEDPRESSED, CBS_CHECKEDDISABLED] then
     begin
-      LCanvas.Font.Color := RGBToColor(192, 192, 192);
+      LCanvas.Font.Color := RGBToColor(255, 255, 255);
       LCanvas.TextRect(pRect, OffsetX, 0, MDL_CHECKBOX_CHECKED, AStyle);
     end;
   finally
