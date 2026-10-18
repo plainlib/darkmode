@@ -8,7 +8,7 @@ unit darkmode;
 interface
 
 uses
-  uDarkStyle, uImport, uWin32WidgetSetDark, darkutils;
+  uDarkStyle, uImport, uWin32WidgetSetDark, DarkUtils;
 
 implementation
 

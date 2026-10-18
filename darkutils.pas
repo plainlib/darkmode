@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------------
-//  darkutils.pas Unit © 2026 by Alexander Tverskoy
+//  DarkUtils Unit © 2026 by Alexander Tverskoy
 //  Licensed under the MIT License
 //  You may obtain a copy of the License at https://opensource.org/licenses/MIT
 //-----------------------------------------------------------------------------------
 
-unit darkutils;
+unit DarkUtils;
 
 {$mode objfpc}{$H+}
 
